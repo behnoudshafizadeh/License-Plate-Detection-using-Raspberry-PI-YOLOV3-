@@ -6,7 +6,7 @@ according to last project in github repo about detecting iranian license-plate d
 
 ## Requirements
 * Raspberri-pi 4B (Hardware)
-* * ss
+  * ss
 * Raspbian (
 
 
