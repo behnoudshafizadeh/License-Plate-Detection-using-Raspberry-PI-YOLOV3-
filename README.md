@@ -12,6 +12,10 @@ according to last project in github repo about detecting iranian license-plate d
 
 
 
+https://user-images.githubusercontent.com/53394692/130777391-9040bdbb-c404-418f-9fae-d1598599dd83.mp4
+
+
+
 
 
 
