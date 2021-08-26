@@ -26,7 +26,6 @@ basis on architecture, the raspberri-Pi receive input image containing a vehicle
 ```
 command for installing : pip install <package name>
 numpy
-torch >= 1.3
 matplotlib
 pycocotools
 tqdm
@@ -34,7 +33,10 @@ Pillow
 declxml==0.9.1
 
 ```
-> Notice : for installing opencv, use this [link](https://www.pyimagesearch.com/2019/09/16/install-opencv-4-on-raspberry-pi-4-and-raspbian-buster/).
+> Notice : for installing opencv, use this [link](https://www.pyimagesearch.com/2019/09/16/install-opencv-4-on-raspberry-pi-4-and-raspbian-buster/) and `yorch >= 1.3` by `.whl` files in below :
+
+![image_2021_08_26T09_42_11_500Z](https://user-images.githubusercontent.com/53394692/130964512-a98cafac-6660-48d6-b7ab-cdd342db86b2.png)
+
 
 * Test Procedure
 > in the below fiure, you see the structure of main folder which cause the ALPR implementation. following files 
@@ -65,8 +67,23 @@ test.sh : bash script file
 > for running all of above mentioned as an unique structure, we gather all oof them together in bash script file as `test.sh`. in primary step, we set a input image `test.jpg` in the directory ,then we run bash file to employ all of instructions sequentially (by order). in the first line we use an instruction for implementing LP yolov3 that it extract possibe LPs and their coordinations in image as a `.txt` file in `output` directory. in seconde instruction, `crop.py` used to extract LPs from input image in `output` directory, and then a third line employ a seconde yolov3 for detecting possible characters and their coordinations (`.txt` file) in LPs and save the results in `output1` directory. in finally step, using `output.py` code for reading LP number. 
 
   * write `./test.sh` to run bash file, and see the results as below (there is an aexample when the LP is not in Query database) :
+
+```
+# instructions in bash file
+#! /bin/bash
+python3 detect.py --source test.jpg --weights convertedlp.weights --cfg yolov3-1cls.cfg --names objectlp.names --img-size 416 --output ./output1/
+
+python3 crop.py --img test.jpg --txt ./output1/test.jpg.txt
+
+python3 detect.py --source test2.jpg --weights convertedch.weights --cfg yolov3-1clstochar.cfg --names objecttochar.names --img-size 416 
+
+python3 output.py --path ./output/test2.jpg.txt
+ ```
+ 
 ![sample1](https://user-images.githubusercontent.com/53394692/130915835-3a01efe1-33d9-45e2-a7a4-6bec52209a7f.PNG)
+
 ![finall bash result](https://user-images.githubusercontent.com/53394692/130915332-a5d15440-59cd-4cb6-b59b-89286c64521c.PNG)
+
 > you see, the LED show red light in it, when we have not LP number is `ls` list :
 
 https://user-images.githubusercontent.com/53394692/130777391-9040bdbb-c404-418f-9fae-d1598599dd83.mp4
