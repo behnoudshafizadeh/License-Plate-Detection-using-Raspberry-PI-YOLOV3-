@@ -90,6 +90,9 @@ https://user-images.githubusercontent.com/53394692/130777391-9040bdbb-c404-418f-
 
 > otherwise, the LED show green light while you have the LP in `ls` list : 
 
+![sample2](https://user-images.githubusercontent.com/53394692/131017053-3e6ed312-18bd-4e95-add4-a269d0671bc9.PNG)
+
+
 https://user-images.githubusercontent.com/53394692/130783385-43e91cd0-071f-4af4-97f4-f70b06e06865.mp4
 
 
